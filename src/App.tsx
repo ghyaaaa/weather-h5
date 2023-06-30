@@ -1,26 +1,12 @@
-import { useEffect } from "react";
-import { searchWeather } from "./api/apis";
+import { Header, WeatherBody } from "./component";
 import Style from "./App.module.less";
 
 function App() {
-  const getApi = async () => {
-    const res = await searchWeather({
-      city: 110000,
-      extensions: "all",
-    });
-
-    console.log("data", res.data);
-    document.writeln(`Response : ${JSON.stringify(res.data)}`);
-  };
-
-  useEffect(() => {
-    getApi();
-  }, []);
-
   return (
-    <>
-      <div className={Style.app}>app</div>
-    </>
+    <div className={Style.layout}>
+      <Header />
+      <WeatherBody />
+    </div>
   );
 }
 

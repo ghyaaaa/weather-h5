@@ -1,0 +1,1 @@
+export { WeatherBody } from "./WeatherBody";
