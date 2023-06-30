@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { searchWeather } from "./api/apis";
-import "./App.css";
+import Style from "./App.module.less";
 
 function App() {
   const getApi = async () => {
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <div>app</div>
+      <div className={Style.app}>app</div>
     </>
   );
 }
