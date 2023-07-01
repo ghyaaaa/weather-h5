@@ -1,4 +1,4 @@
-import { Header, WeatherBody, WeatherDay } from "./component";
+import { Header, WeatherBody, WeatherDay, WeatherChart } from "./component";
 import Style from "./App.module.less";
 import { useState, useMemo } from "react";
 import * as dayjs from "dayjs";
@@ -33,6 +33,7 @@ function App() {
       <Header getWeatherData={getWeatherData} />
       <WeatherBody data={todayWeatherData} />
       <WeatherDay data={forecastData} />
+      <WeatherChart data={forecastData} />
     </div>
   );
 }
