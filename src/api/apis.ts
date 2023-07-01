@@ -6,10 +6,19 @@ interface SearchWeatherParams extends AxiosRequestConfig {
   extensions: string;
 }
 
+interface GetAdCode extends AxiosRequestConfig {
+  keywords: string;
+  subdistrict: number;
+}
+
 export const searchWeather = (query: SearchWeatherParams) => {
   return get("/api/weatherSearch", query);
 };
 
 export const getIP = () => {
   return get("/api/getIP");
+};
+
+export const getAdCode = (query: GetAdCode) => {
+  return get("/api/getAdCode", query);
 };

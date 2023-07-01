@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { SearchBar } from "antd-mobile";
 import { EnvironmentOutline } from "antd-mobile-icons";
-import { City, Weather } from "../../type";
-import { getIP, searchWeather } from "../../api/apis";
+import { City, District, Weather } from "../../type";
+import { getIP, searchWeather, getAdCode } from "../../api/apis";
 import Style from "./Header.module.less";
 
 interface IProps {
@@ -12,18 +12,38 @@ interface IProps {
 export const Header = (props: IProps) => {
   const { getWeatherData } = props;
 
-  const [city, setCity] = useState<City>();
+  const searchRef: any = useRef(null);
+
+  const [city, setCity] = useState<{ name: string; adcode: string }>();
 
   const getGeoIP = async () => {
     const res = await getIP();
-
-    setCity(JSON.parse(res.data));
+    const data: City = JSON.parse(res.data);
+    setCity({
+      name: data.city,
+      adcode: data.adcode,
+    });
   };
 
   const getWeather = async (params: { city: string; extensions: string }) => {
     const res = await searchWeather(params);
 
     getWeatherData(JSON.parse(res.data));
+  };
+
+  const getCityAdCode = async (params: {
+    keywords: string;
+    subdistrict: number;
+  }) => {
+    const res = await getAdCode(params);
+    const district: District = JSON.parse(res.data);
+
+    const firstDistrictsItem = district.districts[0];
+
+    setCity({
+      name: firstDistrictsItem.name,
+      adcode: firstDistrictsItem.adcode,
+    });
   };
 
   useEffect(() => {
@@ -39,14 +59,35 @@ export const Header = (props: IProps) => {
     }
   }, [city]);
 
+  const onSearch = (value: string) => {
+    getCityAdCode({
+      keywords: value,
+      subdistrict: 0,
+    });
+
+    searchRef.current.clear();
+    searchRef.current.focus();
+  };
+
+  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    onSearch(value);
+  };
+
   return (
     <div className={Style.layout}>
       {/* 定位 */}
       <div className={Style.city}>
         <EnvironmentOutline />
-        {city?.city}
+        {city?.name}
       </div>
-      <SearchBar placeholder="请输入内容" />
+      <SearchBar
+        ref={searchRef}
+        placeholder="请输入中文，支持中国城市"
+        onBlur={onBlur}
+        onSearch={onSearch}
+      />
     </div>
   );
 };

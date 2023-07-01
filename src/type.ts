@@ -48,3 +48,21 @@ export interface Weather {
 }
 
 export type DateState = 1 | 2; // 1 早上 2 晚上
+
+export interface District {
+  status: 0 | 1;
+  info: string;
+  infocode: string;
+  suggestion: {
+    keywords: [];
+    cites: [];
+  }[];
+  districts: {
+    citycode: string;
+    adcode: string;
+    name: string;
+    center: string;
+    districts: [];
+    level: string;
+  }[];
+}

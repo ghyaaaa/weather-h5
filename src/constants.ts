@@ -9,8 +9,9 @@ export const weeks = new Map([
 ]);
 
 export const weatherImage = new Map([
-  ["小雨", "https://i.i8tq.com/e_index/blueTemperature/07_d.png"],
+  ["小雨", "https://i.i8tq.com/e_index/blueTemperature/07.png"],
   ["多云", "https://i.i8tq.com/e_index/blueTemperature/01_d.png"],
   ["阴", "https://i.i8tq.com/e_index/blueTemperature/01_n.png"],
   ["阵雨", "https://i.i8tq.com/e_index/blueTemperature/03_n.png"],
+  ["晴", "https://i.i8tq.com/e_index/blueTemperature/00_d.png"],
 ]);
