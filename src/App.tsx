@@ -29,11 +29,27 @@ function App() {
   }, [forecastData]);
 
   return (
-    <div className={Style.layout}>
-      <Header getWeatherData={getWeatherData} />
-      <WeatherBody data={todayWeatherData} />
-      <WeatherDay data={forecastData} />
-      <WeatherChart data={forecastData} />
+    <div
+      style={{
+        marginTop: 0,
+        position: "absolute",
+        width: "100%",
+        top: "0px",
+        bottom: "0px",
+        background: "#fff",
+      }}
+    >
+      <div
+        className={Style.layout}
+        style={{
+          backgroundImage: `url("https://i.i8tq.com/e_index/n01.png?2013")`,
+        }}
+      >
+        <Header getWeatherData={getWeatherData} />
+        <WeatherBody data={todayWeatherData} />
+        <WeatherDay data={forecastData} />
+        <WeatherChart data={forecastData} />
+      </div>
     </div>
   );
 }
