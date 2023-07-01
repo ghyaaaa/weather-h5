@@ -53,6 +53,7 @@ export interface District {
   status: 0 | 1;
   info: string;
   infocode: string;
+  count: string;
   suggestion: {
     keywords: [];
     cites: [];

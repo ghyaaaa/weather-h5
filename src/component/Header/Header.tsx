@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { SearchBar } from "antd-mobile";
+import { SearchBar, Toast } from "antd-mobile";
 import { EnvironmentOutline } from "antd-mobile-icons";
 import { City, District, Weather } from "../../type";
 import { getIP, searchWeather, getAdCode } from "../../api/apis";
@@ -38,12 +38,19 @@ export const Header = (props: IProps) => {
     const res = await getAdCode(params);
     const district: District = JSON.parse(res.data);
 
-    const firstDistrictsItem = district.districts[0];
+    if (Number(district.count)) {
+      const firstDistrictsItem = district.districts[0];
 
-    setCity({
-      name: firstDistrictsItem.name,
-      adcode: firstDistrictsItem.adcode,
-    });
+      setCity({
+        name: firstDistrictsItem.name,
+        adcode: firstDistrictsItem.adcode,
+      });
+    } else {
+      Toast.show({
+        icon: "fail",
+        content: "请输入正确的城市名字",
+      });
+    }
   };
 
   useEffect(() => {
@@ -60,6 +67,7 @@ export const Header = (props: IProps) => {
   }, [city]);
 
   const onSearch = (value: string) => {
+    if (!value) return;
     getCityAdCode({
       keywords: value,
       subdistrict: 0,
@@ -71,7 +79,7 @@ export const Header = (props: IProps) => {
 
   const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
+    if (!value) return;
     onSearch(value);
   };
 

@@ -1,6 +1,6 @@
 import * as dayjs from "dayjs";
 import { useMemo } from "react";
-import { weeks } from "../../constants";
+import { weeks, weatherImage } from "../../constants";
 import { Space } from "antd-mobile";
 import { todayTimeState } from "../../utils";
 import { Casts } from "../../type";
@@ -48,9 +48,15 @@ export const WeatherBody = (props: IProps) => {
     return timeState === 1 ? data?.daytemp : data?.nighttemp;
   }, [data, timeState]);
 
+  // 获取早晚天气
   const dayWeather = useMemo(() => {
     return timeState === 1 ? data?.dayweather : data?.nightweather;
   }, [data, timeState]);
+
+  // 获取天气图片
+  const getWeatherImg = useMemo(() => {
+    return weatherImage.get(dayWeather);
+  }, [dayWeather]);
 
   const dayWind = useMemo(() => {
     return timeState === 1
@@ -76,7 +82,7 @@ export const WeatherBody = (props: IProps) => {
         </div>
         <div className={Style.weatherIcon}>
           <span>℃</span>
-          <img src="https://i.i8tq.com/e_index/todayweather/01_n.png"></img>
+          <img src={getWeatherImg}></img>
         </div>
         <div className={Style.focTemp}>
           <h2>{dayWeather}</h2>
