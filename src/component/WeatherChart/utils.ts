@@ -138,8 +138,6 @@ export const getOption = (data: Casts[]) => {
       name: "最高气温",
       type: "line",
       data: maxTempList,
-      symbol: "emptyCircle",
-      symbolSize: 10,
       showSymbol: true,
       smooth: true,
       itemStyle: {
@@ -150,11 +148,8 @@ export const getOption = (data: Casts[]) => {
       label: {
         show: true,
         position: "top",
-        // color: 'white',
+        color: "white",
         formatter: "{c}°",
-      },
-      lineStyle: {
-        width: 1,
       },
       areaStyle: {
         opacity: 1,
@@ -165,8 +160,6 @@ export const getOption = (data: Casts[]) => {
       name: "最低气温",
       type: "line",
       data: minTempList,
-      symbol: "emptyCircle",
-      symbolSize: 10,
       showSymbol: true,
       smooth: true,
       itemStyle: {
@@ -177,11 +170,8 @@ export const getOption = (data: Casts[]) => {
       label: {
         show: true,
         position: "bottom",
-        // color: 'white',
+        color: "white",
         formatter: "{c}°",
-      },
-      lineStyle: {
-        width: 1,
       },
       areaStyle: {
         opacity: 1,
