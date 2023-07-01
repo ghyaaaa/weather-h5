@@ -6,7 +6,19 @@
   border-radius: 10px;
   margin-top: 0;
 
+  --adm-color-background: transparent;
+
   :global .adm-jumbo-tabs-header {
-    border-bottom-width: 0; 
+    border-bottom-width: 0;
+
+    .adm-jumbo-tabs-tab-wrapper {
+      flex: none;
+      flex-basis: 33%;
+      height: 100%;
+    
+      .adm-jumbo-tabs-tab {
+        position: static;
+      }
+    }
   }
 }
