@@ -15,13 +15,14 @@ const service = axios.create({
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
-    return res;
-    // if (res.code !== 200) {
-    //   console.log("接口信息报错", res.message);
-    //   return Promise.reject(new Error(res.message || "Error"));
-    // } else {
-    //   return res;
-    // }
+
+    const data = JSON.parse(res.data);
+    if (!data.status) {
+      console.log("接口信息报错", res.message);
+      return Promise.reject(new Error(res.message || "Error"));
+    } else {
+      return res;
+    }
   },
   (error) => {
     console.log("接口信息报错" + error);
