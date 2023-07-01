@@ -46,3 +46,5 @@ export interface Weather {
   };
   forecasts: Forecasts[];
 }
+
+export type DateState = 1 | 2; // 1 早上 2 晚上

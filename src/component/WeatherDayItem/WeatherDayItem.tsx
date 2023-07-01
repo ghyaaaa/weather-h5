@@ -15,9 +15,7 @@ export const WeatherDayItem = (props: IProps) => {
   const { data } = props;
 
   const isTodayText = useMemo(() => {
-    return dayjs(data.date).isToday()
-      ? "今天"
-      : `星期${weeks.get(Number(data.week))}`;
+    return dayjs(data.date).isToday() ? "今天" : `星期${weeks.get(data.week)}`;
   }, [data]);
 
   const dayDate = useMemo(() => {
