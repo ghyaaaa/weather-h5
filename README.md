@@ -1,17 +1,31 @@
 # weather-h5
+<p align="center">
+  <img src="./public/project.png" alt="banner" href="">
+</p>
 
-## Introduction - 介绍
 
-### Summary - 概要
+# Summary - 概要
+  这个是一款根据中国城市搜索天气的web App，我们可以看到近4天的数据
+  
+  本项目基于React+TS+Echarts+axios+lodash+less+css Module来开发，基于axios做拦截器，可以统一处理错误请求。
 
-### Features - 特性
+## Development - 开发
+  克隆此仓库，然后通过下面程序安装依赖项:
+  
+  目前的接口是基于本地node服务起的需要将这个项目启动起来[**weather-node-server**](https://github.com/ghyaaaa/weather-node-server)
 
-## Requirements - 必要条件（环境，对所有项目，和所有子模块和库的描述。）
+  ```sh
+  yarn install
+  ```
 
-## Configuration - 配置（配置信息。）
+  安装依赖后,可以通过一下操作来构建项目:
 
-## Installation - 安装（如何安装。）
+  启动项目:
+  ```sh
+  yarn dev
+  ```
+  打包项目:
+  ```sh
+  yarn build
+  ```
 
-## Usage - 用法（用法。）
-
-## Development - 开发（关于怎样开发的文档信息。（API 等。））
