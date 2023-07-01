@@ -3,7 +3,7 @@ import Style from "./App.module.less";
 import { useState, useMemo } from "react";
 import * as dayjs from "dayjs";
 import * as isToday from "dayjs/plugin/isToday";
-import { Forecasts, Weather, Casts } from "./type";
+import { Forecasts, Weather } from "./type";
 
 dayjs.extend(isToday);
 
