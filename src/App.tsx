@@ -91,16 +91,7 @@ function App() {
       <div style={{ background: "#ace0ff" }}>
         <SafeArea position="top" />
       </div>
-      <div
-        style={{
-          marginTop: 0,
-          position: "absolute",
-          width: "100%",
-          top: "0px",
-          bottom: "0px",
-          background: "#fff",
-        }}
-      >
+      <div className={Style.main}>
         <div
           className={Style.layout}
           style={{
