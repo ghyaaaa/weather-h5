@@ -16,18 +16,22 @@ interface IProps {
 export const WeatherBody = (props: IProps) => {
   const { data } = props;
 
+  // 获取周几信息
   const todayWeek = useMemo(() => {
     return `星期${weeks.get(data?.week || "")}`;
   }, [data]);
 
+  // 今天几月几日
   const todayDate = useMemo(() => {
     return dayjs(data?.date).format("MM月DD日");
   }, [data]);
 
+  // 今日信息
   const today = useMemo(() => {
     return `${todayDate}(${todayWeek})`;
   }, [todayDate, todayWeek]);
 
+  // 获取天气更新时间
   const hourMinute = useMemo(() => {
     if (data?.reporttime) {
       return `${dayjs(data?.reporttime).format("H:mm")}更新`;
@@ -36,10 +40,12 @@ export const WeatherBody = (props: IProps) => {
     return `${dayjs().hour()}:${dayjs().minute()}更新`;
   }, [data]);
 
+  // 白天和晚上的温度
   const temp = useMemo(() => {
     return `${data?.daytemp}℃/${data?.nighttemp}℃`;
   }, [data]);
 
+  // 判断早上还是晚上
   const timeState = useMemo(() => {
     return todayTimeState();
   }, []);

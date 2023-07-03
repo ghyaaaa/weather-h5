@@ -1,3 +1,5 @@
+// 组装echarts的options
+
 import * as dayjs from "dayjs";
 import { Casts } from "../../type";
 import { todayTimeState } from "../../utils";
