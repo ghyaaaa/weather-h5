@@ -4,7 +4,7 @@ import * as dayjs from "dayjs";
 import * as isToday from "dayjs/plugin/isToday";
 import { City, District, Forecasts, Weather } from "./type";
 import { getAdCode, getIP, searchWeather } from "./api/apis";
-import { Toast, SpinLoading } from "antd-mobile";
+import { Toast, SpinLoading, SafeArea } from "antd-mobile";
 import Style from "./App.module.less";
 
 dayjs.extend(isToday);
@@ -87,34 +87,42 @@ function App() {
   }, [city]);
 
   return (
-    <div
-      style={{
-        marginTop: 0,
-        position: "absolute",
-        width: "100%",
-        top: "0px",
-        bottom: "0px",
-        background: "#fff",
-      }}
-    >
+    <div>
+      <div style={{ background: "#ace0ff" }}>
+        <SafeArea position="top" />
+      </div>
       <div
-        className={Style.layout}
         style={{
-          backgroundImage: `url("https://i.i8tq.com/e_index/n01.png?2013")`,
+          marginTop: 0,
+          position: "absolute",
+          width: "100%",
+          top: "0px",
+          bottom: "0px",
+          background: "#fff",
         }}
       >
-        {loading ? (
-          <div className={Style.loading}>
-            <SpinLoading color="primary" />
-          </div>
-        ) : (
-          <>
-            <Header city={city} getCityAdCode={getCityAdCode} />
-            <WeatherBody data={todayWeatherData} />
-            <WeatherDay data={forecastData} />
-            <WeatherChart data={forecastData} />
-          </>
-        )}
+        <div
+          className={Style.layout}
+          style={{
+            backgroundImage: `url("https://i.i8tq.com/e_index/n01.png?2013")`,
+          }}
+        >
+          {loading ? (
+            <div className={Style.loading}>
+              <SpinLoading color="primary" />
+            </div>
+          ) : (
+            <>
+              <Header city={city} getCityAdCode={getCityAdCode} />
+              <WeatherBody data={todayWeatherData} />
+              <WeatherDay data={forecastData} />
+              <WeatherChart data={forecastData} />
+            </>
+          )}
+        </div>
+      </div>
+      <div style={{ background: "#ace0ff" }}>
+        <SafeArea position="bottom" />
       </div>
     </div>
   );
